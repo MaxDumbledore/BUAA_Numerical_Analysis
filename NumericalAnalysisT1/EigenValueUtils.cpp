@@ -56,7 +56,7 @@ pair<double, Vector> EigenValueUtils::invPowerMethodWithNorm2(const SymBandMatri
     return {1 / beta, move(y)};
 }
 
-std::pair<double, Vector> EigenValueUtils::powerMethodWithNormInf(const SymBandMatrix &matrix, const double eps) {
+pair<double, Vector> EigenValueUtils::powerMethodWithNormInf(const SymBandMatrix &matrix, const double eps) {
     TimerUtil::start(__func__);
     Vector u(matrix.size(), true), y;
     double beta = 0, oldBeta;
@@ -79,7 +79,7 @@ std::pair<double, Vector> EigenValueUtils::powerMethodWithNormInf(const SymBandM
     return {beta, move(y)};
 }
 
-std::pair<double, Vector> EigenValueUtils::invPowerMethodWithNormInf(const SymBandMatrix &matrix, const double eps) {
+pair<double, Vector> EigenValueUtils::invPowerMethodWithNormInf(const SymBandMatrix &matrix, const double eps) {
     TimerUtil::start(__func__);
     Vector u(matrix.size(), true), y;
     double beta = 0, oldBeta;

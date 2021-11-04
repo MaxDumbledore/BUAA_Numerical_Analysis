@@ -10,10 +10,10 @@ using namespace std;
 
 Vector::Vector(int n, bool randomInit) : data(n) {
     if (randomInit) {
-        static default_random_engine engineForVecGen(std::chrono::system_clock::now().time_since_epoch().count());
-        std::normal_distribution<double> distribution(0, 3.2);
+        static default_random_engine engineForVecGen(chrono::system_clock::now().time_since_epoch().count());
+        normal_distribution<double> distribution(0, 3.2);
         for (int i = 1; i <= n; i++)
-            at(i)= distribution(engineForVecGen);
+            at(i) = distribution(engineForVecGen);
     }
 }
 
@@ -27,7 +27,7 @@ double Vector::norm2() const {
 Vector Vector::operator/(double t) const {
     Vector r(length());
     for (int i = 1; i <= length(); i++)
-        r.at(i)= at(i) / t;
+        r.at(i) = at(i) / t;
     return r;
 }
 

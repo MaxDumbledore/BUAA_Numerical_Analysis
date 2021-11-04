@@ -6,21 +6,22 @@
 #include <iostream>
 
 using namespace std;
+using namespace chrono;
 
 void TimerUtil::start(string_view name) {
-    timer[name].first = clock();
+    timer[name].first = system_clock::now();
 }
 
 void TimerUtil::finish(string_view name) {
     auto &item = timer[name];
-    item.second += (double) (clock() - item.first) / CLOCKS_PER_SEC;
-}
-
-double TimerUtil::getElapsedTime(string_view name) {
-    return timer[name].second;
+    item.second += (double) duration_cast<microseconds>(system_clock::now() - item.first).count();
 }
 
 void TimerUtil::printAllTime() {
     for (auto &[name, item]:timer)
-        cout << name << ": " << item.second << endl;
+        cout << name << ": " << item.second * microseconds::period::num / microseconds::period::den << endl;
+}
+
+void TimerUtil::clear() {
+    timer.clear();
 }

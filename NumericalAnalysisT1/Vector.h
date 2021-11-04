@@ -9,6 +9,11 @@
 #include <random>
 #include <cassert>
 
+/**
+ * @brief 向量类
+ * 实现向量的基本运算，可以使用随机化的方式初始化
+ */
+
 class Vector {
 public:
     Vector() = default;
